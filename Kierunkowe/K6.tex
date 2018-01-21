@@ -1,0 +1,77 @@
+\section{K6 -- Język UML w projektowaniu oprogramowania}
+
+UML w kontekście projektowania oprogramowania jest językiem pozwalającym na modelowanie i opisywanie systemów i ich części.
+
+Pozwala na standaryzowany, graficzny zapis systemu z uwzględnieniem zarówno jego części konceptualnych, takich jak funkcje i procesy biznesowe, jak i obiektów fizycznych jakimi mogą być bazy danych czy warstwa sprzętowa.
+
+W jaki sposób używa się UMLa do modelowania? Korzysta się z diagramów, które są podzielone ze względu na modelowanie strukturalne -- diagramy pakietów, klas, komponentów itd -- oraz behawioralne -- diagramy sekwencji, przypadków użycia, stanu itd.
+
+UML jest przydatnym narzędziem nie tylko w procesie modelowania, ale również podczas szybkich rozmów między programistami kiedy chce się szybko nakreślić ideę.
+
+Omówmy kilka najczęściej spotykanych diagramów.
+
+\subsection{Diagramy strukturalne}
+\subsubsection{Diagram pakietów}
+Pełni rolę organizacyjną. Zawiera w sobie inne elementy języka, zazwyczaj diagramy klas. Jest to ogólna wizualizacja systemu, z przedstawieniem zależności pomiędzy jego częściami.
+
+\subsubsection{Diagram klas}
+Składa się z zamodelowanych klas oraz relacji między nimi.
+
+Pojedynczą klasę umieszcza się w prostokącie podzielonym na trzy części
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item{nazwę,}
+	\item{atrybuty,}
+	\item{funkcje.}
+\end{itemize}
+
+Atrybuty oraz funkcje oznacza się modyfikatorem dostępu (np. + dla public, - dla private), składniki statyczne zaznacza się poprzez podkreślenie, a stereotypy -- elementy służące do doprecyzowania semantyki elementu, np. oznaczenie jako klucz główny -- umieszcza się w podwójnych nawiasach ostrych <<>>.
+
+Relacje między klasami:
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item{\textbf{Zależność -- strzałka przerywana} -- podstawowa relacja mówiąca, że obiekt może w jakiś sposób korzystać lub wpływać na inne obiekty.}
+	\item{\textbf{Asocjacja -- linia ciągła} -- obiekty wykorzystują inne obiekty (człowiek używa magazynu do przechowywania rzeczy).}
+	\item{\textbf{Agregacja częściowa -- pusta strzałka z rombem} -- obiekt posiada inne obiekty, ale nie są one do niego przypisane na wyłączność (kiedy człowiek umrze, jego samochód dalej istnieje).}
+	\item{\textbf{Agregacja całkowita -- pełna strzałka z rombem} -- obiekt posiada inne obiekty i jest za nie odpowiedzialny (kiedy człowiek umrze, jego serce umiera wraz z nim).}
+	\item{\textbf{Dziedziczenie -- pusta strzałka} -- określa hierarchię dziedziczenia.}
+\end{itemize}
+
+\subsubsection{Diagram wdrożenia}
+Pokazuje on strukturę fizyczną systemu, z uwzględnieniem obiektów systemu oraz elementami zewnętrznymi (np. maszyna obliczeniowa, czy też baza danych). Diagram ten jest przydatny przy wdrażaniu dużych systemów.
+
+\subsection{Diagramy behawioralne}
+\subsubsection{Diagram przypadków użycia}
+Diagram umożliwia analizę oraz dokumentację wymagań co do funkcjonalności systemu -- w jasny sposób pokazuje co jest od niego wymagane i pomaga w opracowaniu projektu oraz przetestowaniu już zbudowanego systemu. Co ważne, diagram nie posiada szczegółowych informacji na temat przypadków użycia -- takie informacje są umieszczane np. na diagramie stanu czy aktywności.
+
+Diagram składa się z
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item{przypadków użycia -- ciąg akcji, z uwzględnieniem ich różnych wariantów, które mogą zostać wykonane podczas interakcji systemu z użytkownikiem,}
+	\item{aktorów -- mogą być to ludzie-użytkownicy, ale również inne systemy czy urządzenia,}
+	\item{związków -- powiązanie pomiędzy elementami diagramu.}
+\end{itemize}
+\subsubsection{Diagram sekwencji}
+Pokazuje w sposób zgodny z intuicją kolejność wywołanych operacji i przepływ sterowania pomiędzy obiektami.
+
+Diagram zbudowany jest z
+\begin{itemize}
+	\item{prostokątów, które oznaczają obiekty,}
+	\item{pionowych linii życia tychże obiektów,}
+	\item{komunikatów wymienianych między obiektami.}
+\end{itemize}
+
+Czas jest reprezentowany w postaci pionowej osi diagramu, a zajętość obiektu jest symbolizowana przez prostokąt umieszczony na jego linii życia.
+
+Do komunikatów wymienianych między obiektami zalicza się między innymi
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item{wywołanie funkcji,}
+	\item{powrót z wywołania,}
+	\item{wywołanie asynchroniczne.}
+\end{itemize}
+
+Na tym diagramie można również umieścić bloki, które przedstawiają specjalne interakcje (np. pętle, alternatywne przejście, sekcję krytyczną).
+
+\subsubsection{Diagram komunikacji}
+Jest to diagram podobny do diagramu sekwencji, jednak skupia się on na obiektach, które są składnikiem interakcji oraz komunikatów, które przesyłają. W odróżnieniu od diagramu sekwencji, nie skupia się na aspekcie czasowym. Rozmieszczenie obiektów jest kluczowe, aby w jasny sposób przedstawić relacje między sobą. Komunikacja jest przedstawiona za pomocą linii łączącej obiekty, natomiast przesyłane dane znajdują się ponad nimi (np. student zalicza egzamin).

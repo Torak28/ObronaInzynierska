@@ -1,0 +1,35 @@
+\section{S8 -- Metody projektowania gier komputerowych}
+
+Produkcja gier zwyczajowo nie odpowiada tradycyjnym cyklom życia programu takim jak model kaskadowy. Jedną z używanych metod podczas produkcji jest programowanie zwinne. Metoda ta jest skuteczna, ponieważ większość projektów nie zaczyna się od jednoznacznych wymogów. Proces produkcji dzieli się na \textbf{preprodukcję}, \textbf{produkcję właściwą} i \textbf{etap konserwacji}. W etapach tych wyróżnić można także \textbf{kamienie milowe}.
+
+\textbf{Etapy projektowania gry komputerowej:}
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item \textbf{Preprodukcja} jest początkowym etapem, w którym twórcy skupiają się wokół projektowania elementów rozgrywki i tworzenia dokumentów. Jednym z głównych celów tej fazy jest stworzenie jednoznacznej i łatwej do zrozumienia dokumentacji, która zawiera wszystkie wytyczne projektu i harmonogram prac. Podczas preprodukcji powstają prototypy, które często służą jako proof-of-concept albo możliwość przetestowania gry.
+	
+	Czasem projekt gry dzieli się na wiele dokumentów, powstających w podanej kolejności:
+	
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item \textbf{Game Concept Document:} Podstawa do stworzenia wizji – dane na temat gatunku, docelowej grupy odbiorców, świata gry. W tym dokumencie także jest zawarty dział "Wykrywanie wymagań" na podstawie którego pozyskamy dane, informacje potrzebne do stworzenia wizji.
+		\item \textbf{Vision Document:} Rozwinięcie dokumentu koncepcji gry. Tutaj już znajdą się pierwsze opisy przewidywanych używanych technologii, dokładniejsze informacje o świecie gry, ważne zależności mechaniki, a nawet pierwsze statystyki na temat postaci, czy misji.
+	\end{itemize}
+	
+	Następne powstają zazwyczaj jednocześnie:
+	
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item \textbf{Art Design Document:} Koncepcje, instrukcje dla grafików, muzyków i innych artystów. Także kolorystyka tworzonych obiektów, ich ogólny klimat.
+		\item \textbf{Project Timeline Document:} Terminy, daty i kamienie milowe, których zadaniem jest regulowanie wykonywania zadań według ściśle określonego czasu.
+		\item \textbf{Testing Document:} Wytyczne dla zespołu testerów, jakie elementy gry są najbardziej narażone na błędy.
+	\end{itemize}
+	
+	Osobną grupą są dokumenty techniczne, które opisują dane elementy – sposób ich implementacji. Przykładowo przed zaprogramowaniem systemu map (wczytywanie – wyświetlanie) jest tworzony dokument opisujący jak należy ten element zaimplementować, czasem także stara się on zwrócić uwagę na newralgiczne punkty tworzonego kodu, w których programista może stworzyć wiele błędów.
+	
+	\item \textbf{Produkcja właściwa} jest główną częścią tworzenia gry, podczas której powstaje kod źródłowy, grafiki i oprawa dźwiękowa. Testowanie gier komputerowych rozpoczyna się, gdy tylko pierwszy kod źródłowy zostanie napisany i wzrasta w trakcie procesu produkcji. Opinie testerów mogą mieć wpływ na ostateczne decyzje dotyczące wykluczenia czy integracji elementów gry w jej ostatecznej wersji. Wprowadzenie wcześniej niezaangażowanych testerów ze świeżą perspektywą może pomóc w identyfikacji nowych błędów. Beta testy mogą obejmować ochotników, na przykład jeśli gra zawiera tryb wieloosobowy. Dźwięki występujące w grze mogą być podzielone na trzy typy: efekty dźwiękowe, muzykę i dialogi postaci. Muzyka może być stworzona przy użyciu programów lub nagrana na żywo.
+	
+	W trakcie wczesnej fazy produkcji gra wchodzi w wersję alfa. Jest to moment, kiedy główne elementy rozgrywki zostały zaimplementowane. Zawartość gry na tym etapie może zostać ponownie przejrzana po wcześniejszym testowaniu. W wersji beta wszystkie funkcje zostały zaimplementowane, a twórcy skupiają się na usuwaniu znalezionych błędów. Testy wersji beta odbywają się na dwa do trzech miesięcy przed premierą. Gdy gra jest wysłana do tłoczni w celu masowej produkcji, zostaje oznaczona wtedy jako wersja „złota”.
+	
+	\item \textbf{Postprodukcja} - po zakończeniu prac nad projektem rozpoczyna się etap konserwacji gry.
+\end{itemize}

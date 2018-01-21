@@ -1,0 +1,107 @@
+\section{S2 -- Protokoły rozległych sieci komputerowych.}
+
+\textbf{Sieć WAN} (z ang. \textit{Wide Area Network}) – sieć komputerowa znajdująca się na obszarze wykraczającym poza miasto, kraj, kontynent.
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item Łączą ze sobą urządzenia rozmieszczone na dużych obszarach geograficznych (np. kraju, kontynentu).
+	\item W celu zestawienia łącza lub połączenia między dwoma miejscami korzystają z usług operatorów telekomunikacyjnych, np. Netia, TP S.A., NASK, Exatel.
+	\item Wykorzystują różne odmiany transmisji szeregowej.
+\end{itemize}
+
+Sieć WAN działa w warstwie fizycznej oraz warstwie łącza danych modelu odniesienia OSI. Łączy ona ze sobą sieci lokalne, które są zazwyczaj rozproszone na dużych obszarach geograficznych. Sieci WAN umożliwiają wymianę ramek i pakietów danych pomiędzy routerami i przełącznikami oraz obsługiwanymi sieciami LAN.
+
+Protokoły sieci rozległych można je podzielić na następujące grupy technik łączenia:
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item \textbf{komutacja kanałów} - polega na przydzieleniu wybranemu połączeniu wybranej sekwencji połączonych kanałów od terminala źródłowego do terminala docelowego. W sieciach z komutacją kanałów przesyłanie danych następuje dopiero po ustanowieniu połączenia, czyli uzyskaniu specjalnej trasy pomiędzy systemem nadawcy a systemem odbiorcy. Trasa jest sekwencją kolejno połączonych kanałów. Kanały te zostają zajęte przez cały czas, w którym trwa połączenie. Zarezerwowane kanały nie mogą być używane przez inne połączenia. Samo przesyłanie informacji odbywa się w 3 fazach: ustanowienie połączenia, transfer danych, rozłączenie połączenia.
+	
+	Jedną z wad techniki komutacji kanałów jest konieczność ustanowienia połączenia między użytkownikami zanim zostaną przesłane dane. Powoduje to powstawanie opóźnień w przesyłaniu informacji oraz to, że kanały są niewykorzystywane podczas zestawiana połączenia, rozłączania połączenia oraz w przerwach między transmisją przy zestawionym połączeniu. W efekcie wzrasta koszt utrzymania takiej sieci a spada jej efektywność. Na plus można zaliczyć wysoką jakość transmisji poprzez trwały kanał (tzn. ustanowiony wcześniej kanał o niezmiennych parametrach). Technika ta wykorzystywana jest w sieciach gdzie przesyła się głos i dane.
+	
+	\item \textbf{łącza dzierżawione} - łącze telekomunikacyjne (miedziane lub światłowód) wydzierżawione od innego operatora lub osoby indywidualnej po to, aby móc przesłać po nim swój sygnał. Łącze dzierżawione transmisji danych ma stałą przepustowość.
+	
+	Opłaty za dzierżawę łącza uiszczane są niezależnie od stopnia jego wykorzystania. Na przykład niezależnie od ilości przesyłanych danych i czasu transmisji w ustalonym okresie, którego dotyczy opłata.
+	
+	Łącza tego typu wykorzystywane są w sytuacjach wymagających zagwarantowanej dyspozycyjności, na przykład dostępu do internetu o gwarantowanej przepustowości. Umożliwiają one klientom uruchamianie własnych usług internetowych dostępnych w trybie całodobowym.
+	
+	\item \textbf{komutacja komórek} - jest odmianą komutacji pakietów, w której pakiety zastąpiono krótkimi komórkami o stałej długości, co pozwala na sprzętową realizacje komutacji. Z komutacją łączy wiąże komutacje ATM konieczność zestawiania połączenia między stacjami końcowymi, przed rozpoczęciem przesyłania informacji użytkowej, tzn. zapewnienia (w sensie statycznym) dostępności zasobów sieci (łączy, buforów w węzłach) w czasie przesyłania tej informacji. W komutacji komórek ATM są aktualizowane wartości wirtualnych ścieżek i kanałów (VPI/VCI).
+	
+	\item \textbf{komutacja pakietów} - technika komutacji pakietów należy do najbardziej elastycznych technik komutacji stosowanych we współczesnych sieciach. Polega ona na przesyłaniu danych przez sieć w postaci pakietów. W odróżnieniu od techniki komutacji łączy pozwala użytkownikom nawiązywać połączenia z wieloma innymi użytkownikami jednocześnie.
+	
+	Pakiety powstają w wyniku podzielenia informacji użytkownika na części o stałej długości (wyjątkiem jest ostatnia część, której długość może być mniejsza) i opatrzenie tych „wycinków” w nagłówek N, też o stałej długości. Nagłówek zawiera informacje, które umożliwiają pakietowi dojście z punktu źródłowego do docelowego, węzłom sieci sprawdzenie poprawności zawartych w pakiecie danych, a punktom docelowym właściwie zestawić i odtworzyć podzieloną informację. W nagłówku zatem, w zależności od organizacji sieci, znajdują się następujące informacje: adresy źródłowy i docelowy, numer portu źródłowego i docelowego, numer pakietu, wskaźnik ostatniego pakietu, a także identyfikator zawartej w pakiecie informacji.
+	
+	Efektem tego jest kilka cech komutacji pakietów:
+	
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item odporność na uszkodzenia sieci (uszkodzone urządzenia są po prostu omijane)
+		\item możliwość docierania pakietów w przypadkowej kolejności (ze względu na różne ścieżki transmisji)
+		\item opóźnienia związane z buforowaniem pakietów w routerach
+		\item duża przepustowość efektywna sieci
+		\item Alternatywą dla komutacji pakietów jest komutacja łączy.
+	\end{itemize}
+	
+	Przykłady sieci wykorzystujących komutację pakietów:
+	
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item IPv4
+		\item IPv6
+	\end{itemize}
+	
+\end{itemize}
+
+\textbf{Przykładowe protokoły:}
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item \textbf{komutacja kanałów:}
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item \textbf{ISDN} - technologia sieci telekomunikacyjnych mająca na celu wykorzystanie infrastruktury PSTN do bezpośredniego udostępnienia usług cyfrowych użytkownikom końcowym (bez pośrednictwa urządzeń analogowych) (ang. end-to-end circuit-switched digital services). Połączenia ISDN zalicza się do grupy połączeń wdzwanianych (komutowanych).
+		
+		ISDN jest znormalizowana w zaleceniach ITU-T oraz standardach ETSI. Europejskie zostały wprowadzone do systemu Polskich Norm jako grupa ICS 33.080 - Sieć Cyfrowa z Integracją Usług
+		\item \textbf{PPP} - protokół warstwy łącza danych, łączy ze sobą dwa węzły sieci tak, że widzą się one, jakby były bezpośrednio ze sobą połączone; protokół ten tworzy tunel, którym idą już właściwe dane w innym protokole (np. dalej IP i TCP).
+	\end{itemize}
+	\item \textbf{komutacja pakietów}
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item \textbf{HDLC} bitowo zorientowany protokół warstwy łącza danych, używany do transmisji punktpunkt, jak i jeden-do-wielu, w sieciach z komutacją pakietów. Charakterystyczne jest to, że stacja może pracować w jednym z trzech trybów:
+		
+		\begin{itemize}
+			\setlength\itemsep{1pt}
+			\item stacja \textit{primary} – może inicjować transmisję ze stacją \textit{secondary}, kontroluje ją, może utrzymywać wiele sesji ze stacjami podrzędnymi
+			\item stacja \textit{secondary} – wykonuje polecenia stacji nadrzędnej, utrzymuje tylko jedną sesję
+			\item stacja uniwersalna – taki mix dwóch powyżej, może utrzymywać tylko jedną sesję
+		\end{itemize}
+		
+		Podczas transmisji przesyłane są ramki o stałej strukturze:
+		\begin{figure}[H]
+			\begin{verbatim}
+			         +--------+--------+--------+---------------+----------------+--------+
+			         | FLAGA  |  ADRES | KONTR. |   INFORMACJE  |      FCS       |  FLAGA |
+			         |    8   |    8   | 8 / 16 | (zmienna dł.) |       16       |    8   |
+			         +--------+--------+--------+---------------+----------------+--------+
+			\end{verbatim}
+		\end{figure}
+		
+		\item \textbf{X.25} Protokół połączeniowy, łączycy węzły sieci rozległych, z komutacją pakietów: DCE \textit{Data Circuit-Terminating Equipment} – wewnętrzne węzły sieci rozległej, DTE \textit{Data Terminal Equipment} – system komputerowy użytkownika. Protokół X.25 definiuje tzw. połączenie wirtualne – czyli mamy kilka połączeń w jednym fizycznym kanale, które postrzegane są tak, jakby naprawdę istniało kilka kabli. Wśród połączeń wirtualnych wyróżnia się:
+		
+		\begin{itemize}
+			\setlength\itemsep{1pt}
+			\item PVC – czyli stałe połączenie wirtualne
+			\item SVC – tymczasowe połączenie wirtualne
+		\end{itemize}
+		
+		Protokół ten ma bardzo rozbudowane mechanizmy kontroli błędów (np. potwierdzanie każdej ramki), stąd nadal jest używany tam, gdzie wymaga się pewności transmisji kosztem prędkości (bankomaty, bankowość ogólnie, medycyna, monitoring waż- nych danych i zasobów). Aktualnie maksymalna prędkość uzyskiwana przy pomocy tego protokołu to 2 Mb/s.
+		
+		\item \textbf{Frame Relay} następca X.25, posiada prostsze mechanizmy kontroli poprawności, przez co transmisja jest o wiele szybsza niż w X.25. Reszta ogólnie tak, jak w X.25.
+		
+		Maksymalna prędkość transmisji to 45 Mb/s.
+	\end{itemize}
+	\item \textbf{komutacja komórek}
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item \textbf{ATM} protokół połączeń w sieciach rozległych, wykorzystuje komutacje komórek. Dane przesyłane są w małych małych porcjach: nagłówek (5 bajtów) + dane (48 bajtów). Też występują tu kanały wirtualne oraz ścieżki wirtualne (orientacja połączeniowa). Kanał fizyczny dzielony jest na ścieżki wirtualne, a te dopiero na kanały wirtualne. Mechanizmy kontroli i sterowania przepływem muszą być realizowane po stronach systemów użytkowników końcowych. Maksymalna prędkość transmisji to 622 Mb/s.
+	\end{itemize}
+\end{itemize}

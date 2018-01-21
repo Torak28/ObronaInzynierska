@@ -1,0 +1,35 @@
+\section{S7 -- Współczesne algorytmy kryptograficzne}
+
+\textbf{Algorytmy kryptograficzne} podzielić możemy na algorytmy symetryczne (z kluczem prywatnym) (symmetric algorithm) lub asymetryczne (z kluczem publicznym). W przypadku tych pierwszych do zaszyfrowania i odszyfrowania wiadomości używamy takiego samego klucza. Wśród algorytmów symetrycznych istnieje podział na algorytmy blokowe(block algorithm) jak i strumieniowe (stream algorithm). W pierwszym przypadku tekst jawny dzielony jest na bloki o odpowiedniej długości (najczęściej 64 lub 128 bitów) a następnie każdy blok jest szyfrowany oddzielnie). W algorytmach strumieniowych - tekst jest szyfrowany bit po bicie lub bajt po bajcie. W przypadku algorytmów asymetrycznych do szyfrowania używamy klucza publicznego (public key) osoby, do której przesyłamy wiadomość a do odszyfrowania osoba ta używa własnego klucza prywatnego(private key).
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item \textbf{symetryczne} – ten sam klucz używany do szyfrowania i deszyfrowania po obu stronach komunikacji:
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item DES – dane szyfrowane są w blokach 64-bitowych kluczem 56-bitowym, algorytm dość bezbezpieczny, ale już go zbruteforce’owali,
+		\item 3DES – 3 x DES – zdecydowanie wzmacnia siłę algorytmu,
+		\item RC4 – szyfr strumieniowy, 40- albo 128-bitowe klucze, zastosowanie: WEP, WPA, SSH,
+		\item AES – blokowy, klucze 128, 192, 256, obecnie najbardziej popularny (wygrywa stosunkiem bezpieczeństwo/szybkość), jego użytek jest bezpłatny, łatwy w implementacji na różnych platformach sprzętowych, zastosowanie: WPA2,
+		\item BlowFish – popularny (ssh, pgp) algorytm, również bezpłatny, dobrze przebadany kryptoanalitycznie, można go efektywnie implementować, podczas pracy mało pamięciożerny
+	\end{itemize}
+	\item \textbf{asymetryczne} – do szyfrowania i deszyfrowania używa się dwóch różnych kluczy: jeden z kluczy jest jawny (znany wszystkim), a drugi prywany (znany tylko jednej osobie lub grupie osób), w zależności od zastosowań jawny może być albo klucz służący do szyfrowania albo deszyfrowania. Cechy algorytmów asymetrycznych wykorzystuje się przy cyfrowym podpisywaniu, wszędzie tam, gdzie wymaga się pewności co do tożsamości i niezaprzeczalności nadawcy (odbiorcy). Przykłady:
+	\begin{itemize}
+		\setlength\itemsep{1pt}
+		\item RSA – do szyfrowania wykorzystuje się funkcje matematyczne (arytmetykę modulo), kluczami są pary liczb, siła algorytmu tkwi w tym, że jedną z liczb w parze jest iloczyn dwóch bardzo dużych liczb pierwszych, a nie istnieje, przynajmniej na razie, żadna efektywna metoda, rozdziału liczb na czynniki pierwsze. Dopiero znajomość rozkładu drugiej liczby z pary pozwoliłaby na deszyfrowanie znając klucz służący do szyfrowania,
+		\item LUC – podobnie jak RSA, ale wykorzystuje tzw. ciągu Lucasa, a nie arytmetykę modulo, ponadto nie jest ograniczony umowami patentowymi (jak RSA),
+		\item El-Gamal – wykorzystuje logarytmy dyskretne (nie ma efektywnej metody, by je liczyć), najpopularniejszy obok RSA
+	\end{itemize}
+\end{itemize}
+
+\textbf{Algorytmy asymetryczne są wolniejsze od symetrycznych}
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item[] Wykorzystanie:
+	\item \textbf{Podpisu cyfrowy} umożliwia potwierdzenie autentyczności dokumentu, weryfikację sygnatariusza, zapewnienie niezmienności treści od momentu podpisania oraz uniemożliwienia wyparcie się faktu podpisania dokumentu. Podpis cyfrowy wykonywany jest przy pomocy klucza prywatnego, a weryfikowany za pomocą klucza publicznego. Oznacza to, że tylko jedna osoba może dokonać podpisu, właściciel klucza prywatnego, natomiast weryfikacji dokumentu może dokonać każdy, wystarczy, że z ogólnodostępnego katalogu pobierze klucz publiczny. Sytuacja jest odwrotna niż w przypadku szyfrowania. Podczas szyfrowania najpierw używamy klucza publicznego, a później klucza prywatnego. Gdy dokonujemy podpisu cyfrowego najpierw używamy klucza prywatnego później publicznego.
+
+	\item Standard X.509 opisuje budowę \textbf{certyfikatu klucza publicznego}. Może on zostać użyty, do przetransportowania różnych informacji związanych zarówno z procedurą szyfrowania jak i z weryfikacją podpisów. Duża część tej informacji jest opcjonalna, a zawartość obowiązkowych pól może się również zmieniać. Certyfikat klucza publicznego jest ochroniony przez podpis cyfrowy wydawcy. Użytkownicy certyfikatów wiedzą, że jego zawartość nie została sfałszowana od momentu, gdy została podpisana, jeśli tylko podpis może zostać zweryfikowany. Certyfikaty zawierają grupę wspólnych pól, ponadto mogą zawierać opcjonalną grupę rozszerzeń. Jest dziesięć elementarnych pól: sześć obowiązkowych i cztery opcjonalne. Obowiązkowe pola to: numer seryjny, algorytm podpisu, nazwa wydawcy certyfikatu, okres ważności certyfikatu, klucz publiczny i nazwa podmiotu. Podmiot jest osobą, bądź organizacją, która jest w posiadaniu odpowiadającego klucza prywatnego. Opcjonalne pola to: numer wersji, dwa unikalne identyfikatory i rozszerzenie. 
+
+	\item \textbf{Protokół SSL} (ang. Secure Sockets Layer), opracowany przez firmę Nescape, stał się standardem komunikacji w Internecie. Został wprowadzony w celu zapewnienia prywatności komunikacji pomiędzy dwoma komputerami (serwerem i klientem) oraz dostarczenia autentyfikacji serwera i opcjonalnie  klienta. Swoje bezpieczeństwo opiera na bezpieczeństwie dostarczonym przez certyfikaty klucza publicznego. SSL posługuje się protokołem komunikacyjnym, (np. TCP) przy wysyłaniu i odbieraniu wiadomości. Zaletą tego protokołu jest fakt, że jest on niezależny od aplikacji. Ustalenie bezpiecznego kanału transmisji może nastąpić przed przesłaniem pierwszej porcji danych przez inne protokoły (np. FTP, TELNET, HTTP). Wszystkie dane przesyłane za pomocą niezabezpieczonych protokołów, dzięki SSL, będą poufne. 
+\end{itemize}

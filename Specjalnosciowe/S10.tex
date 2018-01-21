@@ -1,0 +1,26 @@
+\section{S10 -- Protokoły routingu}
+
+Służą do wymiany informacji, pomiędzy routerami, dotyczącymi tras pomiędzy sieciami komputerowymi. Tradycyjne trasowanie jest bardzo proste, bo polega na wykorzystaniu tylko informacji o następnym "przeskoku" (ang. hop). W tym przypadku router tylko kieruje pakiet do następnego routera, bez uwzględnienia na przykład zbyt wielkiego obciążenia czy awarii na dalszej części trasy.
+
+Mimo że dynamiczne trasowanie jest bardzo skomplikowane, to właśnie dzięki niemu Internet jest tak elastyczny i rozwinął się o ponad 8 rzędów wielkości w ciągu ostatnich 40 lat.
+
+Protokoły trasowania robią dwie proste rzeczy:
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item mówią światu, kim są sąsiedzi
+	\item mówią sąsiadom, jak wygląda świat
+\end{itemize}
+
+Metryka trasowania jest wartością używaną przez algorytmy trasowania do określenia, która trasa jest lepsza. Brane są pod uwagę: szerokość pasma, opóźnienie, liczba przeskoków, koszt ścieżki, obciążenie, MTU, niezawodność, koszt komunikacji. Tylko najlepsze trasy przechowywane są w tablicach trasowania, podczas gdy inne mogą być przechowywane w bazach danych. Jeśli router korzysta z mechanizmów równoważenia obciążenia (ang. \textit{load balancing}), w tablicy trasowania może wystąpić kilka najlepszych tras. Router będzie je wykorzystywał równolegle, rozpraszając obciążenie równomiernie pomiędzy trasami.
+
+Protokoły sieci rozległych:
+
+\textbf{RIP} – router wysyła do sąsiednich routerów informacje dotyczące jego tablicy routingu. Router otrzymujący taką informacje aktualizuje swoją tablicę, zapisując jednocześniej odległość (w sensie liczby skoków), jaka dzieli go od danej sieci. Wybierana są ścieżki o najmniejszym koszcie. Używa algorytmu Forda-Bellmana. W wersji RIPv1 używa trasowania klasowego, w wersji RIPv2 – trasowania bezklasowego. Protokół wewnętrzny, wektora odległości.
+
+\textbf{OSPF} – Shortest Path First, wybierana jest najkrótsza ścieżka do miejsca przeznaczenia. Routery wysyłają do siebie pakiety informacyjne, dzięki temu każdy z nich ma bogatą informacje o topologii sieci. Następnie używany jest algorytm Dijkstry do znalezienia najbardziej korzystej (najkrótszej) ścieżki. O wiele bardziej skalowalny i dokładny niż RIP. Protokół wewnętrzny, stanu łącza.
+
+\textbf{IS-IS} – praktycznie to samo, co OSPF, ale: OSPF działa na (z ang. on top of IP) warstwie trzeciej modelu ISO/OSI, natomiast IS-IS jest protokołem warstwy trzeciej. Wynika z tego, że OSPF jest uzależniony w działaniu od protokołu IP, natomiast IS-IS ma serdecznie gdzieś, jaki protokół warstwy sieciowej jest aktualnie używany do normalnego ruchu w sieci,
+
+\textbf{IGRP} – protokół wewnętrzny, wektora odległości. Podobnie jak RIP, ale w RIP-ie jako metryki używa się liczby skoków do miejsca przeznaczenia, natomiast tutaj metryką jest szerokość pasma, jego obciążenie, opóźnienie i niezawodność. Obsługuje średnie sieci. Protokół własnościowy CISCO. Jego następcą jest \textbf{EIGRP}, który używa już trasowania bezklasowego.
+
+\textbf{BGP} – protokół zewnętrzny, używany do wymiany informacji pomiędzy różnymi systemami autonomicznymi. Nie używa tradycyjnych metryk, ale zestawu atrybutów. Aktualna wersja jest podstawą działania Internetu. Protokół działa przy użyciu protokołu TCP, przez co cechuje go duża niezawodność. Routery BGP wymieniają informacje z innymi routerami BGP o ich osiągalności w sieci Internet, informacje te zawierają listę systemów, przez jakie muszą przejść dane, aby dotrzeć do adresata
