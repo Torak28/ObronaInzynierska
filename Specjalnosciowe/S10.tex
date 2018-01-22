@@ -19,7 +19,7 @@ Protokoły sieci rozległych:
 
 \textbf{OSPF} – Shortest Path First, wybierana jest najkrótsza ścieżka do miejsca przeznaczenia. Routery wysyłają do siebie pakiety informacyjne, dzięki temu każdy z nich ma bogatą informacje o topologii sieci. Następnie używany jest algorytm Dijkstry do znalezienia najbardziej korzystej (najkrótszej) ścieżki. O wiele bardziej skalowalny i dokładny niż RIP. Protokół wewnętrzny, stanu łącza.
 
-\textbf{IS-IS} – praktycznie to samo, co OSPF, ale: OSPF działa na (z ang. on top of IP) warstwie trzeciej modelu ISO/OSI, natomiast IS-IS jest protokołem warstwy trzeciej. Wynika z tego, że OSPF jest uzależniony w działaniu od protokołu IP, natomiast IS-IS ma serdecznie gdzieś, jaki protokół warstwy sieciowej jest aktualnie używany do normalnego ruchu w sieci,
+\textbf{IS-IS} – praktycznie to samo, co OSPF, ale: OSPF działa na (z ang. on top of IP) warstwie drugiej modelu ISO/OSI, natomiast IS-IS jest protokołem warstwy trzeciej. Wynika z tego, że OSPF jest uzależniony w działaniu od protokołu IP, natomiast IS-IS ma serdecznie gdzieś, jaki protokół warstwy sieciowej jest aktualnie używany do normalnego ruchu w sieci,
 
 \textbf{IGRP} – protokół wewnętrzny, wektora odległości. Podobnie jak RIP, ale w RIP-ie jako metryki używa się liczby skoków do miejsca przeznaczenia, natomiast tutaj metryką jest szerokość pasma, jego obciążenie, opóźnienie i niezawodność. Obsługuje średnie sieci. Protokół własnościowy CISCO. Jego następcą jest \textbf{EIGRP}, który używa już trasowania bezklasowego.
 

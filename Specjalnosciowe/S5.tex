@@ -43,10 +43,16 @@
 \end{itemize}
 	
 My podczas zajęć korzystaliźmy z wirtualizacji VirtualBoxa, emulując np. Windowsa 7, czy CentOS-a.
-		
-		
-		
-		
-		
-		
-		
+
+\begin{itemize}
+	\setlength\itemsep{1pt}
+	\item[] \textbf{Typy wirtualizacji}
+	\item \textbf{Parawirtualizacja} – technika wirtualizacji, w której wirtualizowany system operacyjny (Gość – ang. \textit{Guest}, Partycja – ang. \textit{Partition} lub Domena – ang. \textit{Domain}) współpracuje ze środowiskiem operacyjnym komputera w zakresie obsługi tych elementów sprzętowych, których obsługa kolidowałaby z działalnością innych środowisk wirtualizowanych.
+	
+	\textbf{Parawirtualizacja} jest to jedna lub wiele maszyn wirtualnych działających obok systemu host. Parawirtualizacja korzysta z hypervisora typu 1, monitor działa tutaj bezpośrednio na sprzęcie i udostępnia go (lub nie) systemom guest. Jeden z wirtualizowanych systemów pełni rolę zarządzającą, może rozdzielać zasoby pośród pozostałych systemów i pełnić pełną kontrolę nad maszyną wirtualną i jej zasobami. System, który mógłby być uruchomiony jako guest za pomocą parawirtualizacji, musi mieć zmodyfikowane jądro w taki sposób, aby zamiast odwołań do sprzętu, jak również standardowych odwołań do sprzętu, które są niedozwolone podczas parawirtualizacji, trzeba używać odwołań typu hypercall. Odwołanie to po prostu interfejs pomiędzy monitorem a systemami guest. Mechanizm zapewnia tutaj bardzo dobrą wydajność, bardzo zbliżoną do natywnego działania systemu. Bardzo dobra wydajność systemów guest oraz łatwość w modyfikowaniu jądra systemu guest w celu przystosowania go do parawirtualizacji jest jego zaletą. Natomiast wadą jest konieczność modyfikowania systemu guest, ponieważ nie zawsze jest możliwe uzyskanie takiej wydajności. Niestety modyfikacja jądra niesie za sobą również koszty związane z dostosowaniem systemu guest do odpowiedniego hypervisora oraz musimy tę procedurę ponowić dla każdego innego hypervisora. Implementacją parawirtualizacji w postaci VMI (Virtual Machine Interface) jest interfejs komunikacji pomiędzy systemem guest a hypervisorem proponowanym przez VMware. Można również powiedzieć, że VMI jest to próba ujednolicenia interfejsu dla wirtualizacji. Celem było także stworzenie jednego interfejsu komunikacji, który byłby zaimplementowany na wielu hypervisorach i w miarę łatwa byłaby implementacja na systemach guest. Zaletą VMI jest to, że implementacja ta nie jest przynależna do jednego hypervisora tylko jest otwarta. Implementacja systemu guest dałaby raz możliwość uruchomienia go we wszystkich liczących się hypervisorach.
+	
+	\item \textbf{Pełna wirtualizacja} – technika wirtualizacji, w której wirtualizowany system operacyjny (gość) ma wrażenie, że działa na prawdziwym, fizycznym sprzęcie (komputerze). W rzeczywistości odwołania wirtualizowanego systemu operacyjnego (gościa) do tych elementów fizycznych komputera, które kolidowałyby z działalnością innych środowisk wirtualizowanych lub systemu operacyjnego gospodarza (ang. host), są przechwytywane przez oprogramowanie wirtualizacyjne, a następnie emulowane. Emulacja taka spowalnia pracę wirtualizowanego środowiska, dlatego pożądane jest sprzętowe wspomaganie wirtualizacji.
+	
+	\textbf{Pełna wirtualizacja} pozwala nam na wirtualizowanie dowolnie wybranego niezmodyfikowanego systemu operacyjnego. Największą zaletą pełnej wirtualizacji jest to, iż nie narzuca ona nam żadnych ograniczeń ani wymagań co do systemu guest. Wydajność w takim rozwiązaniu jest niestety mniejsza niż w przypadku parawirtualizacji. Zarówno za pomocą hypervisora typu 1, jak i typu 2 może być zrealizowana pełna wirtualizacja. Głównym wyzwaniem pełnej wirtualizacji jest realizowanie i przechwytywanie uprzywilejowanych instrukcji jądra guest, tak jak na przykład operacja I/O, przerwań czy operacji na pamięci. Większość instrukcji systemu guest wykonywana jest bezpośrednio na procesorze przez hypervisora, natomiast te instrukcje, które wychodzą poza uprawnienia systemu guest, jak też odwołują się do sprzętu, powinny być przechwycone i emulowane. W przypadku kiedy zostanie użyty hypervisor typu 1 wymagane jest odpowiednie rozszerzenie sprzętowe, które umożliwia wirtualizację. Pełną wirtualizację określa się również pojęciem natywna wirtualizacja oraz wirtualizacja wspierana sprzętowo. Jeśli do pełnej wirtualizacji użyjemy hypervisora typu 2, to będziemy ją realizować przez mechanizmy takie jak binary translation oraz direct execution, często ze wsparciem pamięci podręcznej tych transakcji w postaci cache, można również użyć kompilacji instrukcji just in time.
+\end{itemize}
+
